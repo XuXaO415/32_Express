@@ -2,14 +2,14 @@ const express = require('express');
 const app = express();
 const ExpressError = require('./expressError');
 
-const { findMean, findMedian } = require('./helpers')
+const { createFrequencyCounter, findMean, findMedian, findMode, convertAndValidateNumsArray } = require('./helpers')
 
 app.get('/mean', function(req, res, next) {
     try {
         const nums = req.query;
         if (!req.query) throw new ExpressError('nums are required', 400);
         let num = req.query.nums.split(',');
-        if (num.is instanceof Error) throw new ExpressError(`${req.query} is not a number`, 400);
+        if (num.is instanceof Error) throw new ExpressError(`${res.query} is not a number`, 400);
 
         return res.json({
             response: {
@@ -49,13 +49,43 @@ app.get('/mean', function(req, res, next) {
 // })
 
 
-// app.get('/median', function(req, res, next) {
 
-// })
+app.get("/median", function(req, res, next) {
+    if (!req.query.nums) {
+        throw new ExpressError(`${res.query} is not a number`, 400);
+    }
+    let numsAsStrings = req.query.nums.split(",");
+    let nums = convertAndValidateNumsArray(numsAsStrings);
+    if (nums instanceof Error) {
+        throw new ExpressError(nums.message);
+    }
 
-// app.get('/mode', function(req, res, next) {
+    let result = {
+        operation: "median",
+        result: findMedian(nums)
+    };
 
-// })
+    return res.send(result);
+});
+
+app.get('/mode', function(req, res, next) {
+    if (!req.query.nums) {
+        throw new ExpressError(`${res.query} is not a number`, 400)
+    }
+    let numsAsStrings = req.query.nums.split(',');
+    let nums = convertAndValidateNumsArray(numsAsStrings);
+    if (nums instanceof Error) {
+        throw new ExpressError(nums.message);
+    }
+    return res.json({
+        response: {
+            operation: "mode",
+            value: findMode(nums)
+        }
+    })
+
+})
+
 
 
 
