@@ -1,12 +1,13 @@
 const express = require("express");
 const morgan = require("morgan");
 const ExpressError = require("./expressError");
-const
-const port = 3000;
-
 const app = express();
+
+
 app.use(express.json());
 app.use(morgan('dev'));
+
+app.use("/items", itemsRoutes);
 
 //404 Handler
 app.use(function(req, res, next) {
@@ -14,7 +15,6 @@ app.use(function(req, res, next) {
 });
 
 //Error handler
-
 app.use(function(req, res, next) {
     let status = err.status || 500;
     return res.status(status).json({
@@ -25,6 +25,6 @@ app.use(function(req, res, next) {
     });
 });
 
-app.listen(port, () => {
-    console.log(`Listening on app: http://localhost${port}`);
-})
+
+
+module.exports = app;
