@@ -1,22 +1,17 @@
 const express = require("express");
-const morgan = require("morgan");
 const ExpressError = require("./expressError");
+const itemRoutes = require("./itemsRoutes");
+
 const app = express();
-const ExpressError = require("./middleware");
-const itemsRoutes = require("./routes/items")
-
-
-app.use(middleware.logger);
 app.use(express.json());
-app.use(morgan('dev'));
-app.use("/items", itemsRoutes);
+app.use("/items", itemRoutes);
 
 //404 Handler
 app.use(function(req, res, next) {
-    return next(new ExpressError("Not Found", 404))
+    return next(new ExpressError("Not Found", 404));
 });
 
-//Error handler
+//General error handler
 app.use(function(req, res, next) {
     let status = err.status || 500;
     return res.status(status).json({
@@ -27,6 +22,6 @@ app.use(function(req, res, next) {
     });
 });
 
-
-
-module.exports = app;
+app.listen(3000, function() {
+    console.log("Server is listening on port 3000");
+});
