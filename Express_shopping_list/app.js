@@ -2,11 +2,13 @@ const express = require("express");
 const morgan = require("morgan");
 const ExpressError = require("./expressError");
 const app = express();
+const ExpressError = require("./middleware");
+const itemsRoutes = require("./routes/items")
 
 
+app.use(middleware.logger);
 app.use(express.json());
 app.use(morgan('dev'));
-
 app.use("/items", itemsRoutes);
 
 //404 Handler
