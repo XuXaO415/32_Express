@@ -16,6 +16,6 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "supertest": "^6.2.1"
+    "supertest": "^6.2.2"
   }
 }
