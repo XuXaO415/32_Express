@@ -8,7 +8,8 @@
   "author": "Elie Schoppik",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "follow-redirects": "^1.14.9"
   },
   "repository": {
     "type": "git",
