@@ -1,0 +1,23 @@
+{
+  "name": "express-intro-demo",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elie Schoppik",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XuXaO415/32_Express.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/XuXaO415/32_Express/issues"
+  },
+  "homepage": "https://github.com/XuXaO415/32_Express#readme",
+  "description": ""
+}
