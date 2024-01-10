@@ -9,7 +9,7 @@
     "license": "ISC",
     "dependencies": {
         "express": "^4.17.3",
-        "follow-redirects": "^1.14.9"
+        "follow-redirects": "^1.15.4"
     },
     "repository": {
         "type": "git",
